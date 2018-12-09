@@ -1,20 +1,40 @@
 // axios - Promise based HTTP client for the browser and node.js
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from 'react'
 
 // extração somente do loadGenres
-
-https://www.devpleno.com/seriereactjs-aulas/ 2455
-import { loadGenres } from './Api'
+import api from './Api'
 
 class App extends Component {
+
+  constructor(props){
+    super(props)
+
+    this.state = {
+      genres: [],
+      isLoading: false
+    }
+  }
   // assim que o componente for montado, a promess irá buscar os generos na API
-  // iniciar o json-server -> json-server --watch db.json port3001
+  // iniciar o json-server -> json-server --watch db.json port 3001
   componentDidMount(){
-    axios.get('http://localhost:3001/genres')
-      .then((res)=>console.log(res))
+    this.setState({isLoading: true})
+    api.loadGenres()
+    // irá acontecfer quando os dados terminarem de ser carregados
+      .then((res)=>{
+        this.setState({
+          isLoading: false,
+          genres: res.data
+        })
+
+      })
   }
 
+  renderGenreLink(genre){
+    return(
+      //retorno de somente um item
+      <span>&nbsp;<a href="">{genre}</a>&nbsp;</span>
+    )
+  }
   render() {
     return (
       <div className="App">
@@ -48,6 +68,20 @@ class App extends Component {
                 </div>
               </div>
             </div>
+          </section>
+
+          <section>
+            {
+              this.state.isLoading &&
+              <span>Aguarde, carregando ...</span>
+            }
+
+            {
+              !this.state.isLoading &&
+              <div>
+                Ver séries do gênero:
+                {this.state.genres.map(this.renderGenreLink)}</div>
+            }
           </section>
 
           <section id="services" className="services-section">
