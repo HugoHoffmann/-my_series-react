@@ -7,12 +7,14 @@ const api = axios.create({
 })
 
 export const loadGenres = () => api.get('genres')
+export const saveSeries = (newSeries) => api.post('series', newSeries)
 
 // todas as apis que serão utilizadas
 // simplificação dos dados de consumo
 const apis = {
     // carregamento dos generos
-    loadGenres: loadGenres 
+    loadGenres: loadGenres,
+    saveSeries: saveSeries
 }
 
 export default apis
