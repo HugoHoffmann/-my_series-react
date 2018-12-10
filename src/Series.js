@@ -1,21 +1,45 @@
 import React, {Component} from 'react'
+import api from '/.Api'
 
 
+const status = {
+    'watched':  'Assistido',
+    'watching': 'Assistindo',
+    'toWatch':  'Assistir'
+}
 
 
 class Series extends Component{
-    renderSeries(){
+    constructor(props){
+        super(props)
+
+        this.state = {
+            isLoading: false,
+            series: []
+        }
+    }
+    componentDidMount(){
+        this.setState({isLoading: true})
+        api.loadSeriesByGenre(this.props.match.params.genre).then(( res ) => {
+            this.setState({
+                isLoading: false,
+                series: res.data
+            })
+        })
+    }
+    renderSeries(series){
         return(
             <div className="item  col-xs-4 col-lg-4">
                 <div className="thumbnail">
                     <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
                     <div className="caption">
                         <h4 className="group inner list-group-item-heading">
-                            How I met your mother</h4>
+                            {series.name}</h4>
                         <div className="row">
                             <div className="col-xs-12 col-md-6">
                                 <p className="lead">
-                                AÇÃO</p>
+                                    {series.genre} / {status[series.status]}
+                                </p>
                             </div>
                             <div className="col-xs-12 col-md-6">
                                 <a className="btn btn-success" href="http://www.jquery2dotnet.com">Gerenciar</a>
@@ -33,6 +57,10 @@ class Series extends Component{
 
                 <div id="series" className="row list-group">
                     
+                    {
+                        !this.state.isLoading && 
+                         this.state.series.map(this.renderSeries)
+                    }
                     
                 </div>
             </section>
