@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-
+import {Link} from 'react-router-dom'
 // extração somente do loadGenres
 import api from './Api'
-
 
 class Home extends Component{
     constructor(props){
@@ -33,7 +32,7 @@ class Home extends Component{
     renderGenreLink(genre){
         return(
             //retorno de somente um item
-            <span>&nbsp;<a href="">{genre}</a>&nbsp;</span>
+            <span key={genre}>&nbsp;<Link to={`/series/${genre}`}>{genre}</Link>&nbsp;</span>
         )
     }
         render(){

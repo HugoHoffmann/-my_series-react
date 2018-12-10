@@ -8,6 +8,7 @@ import{
 
 import Home from './Home'
 import NewSeries from './NewSeries'
+import Series from './Series'
 
 // functional-stateless component
 const About = () => <section className='intro-section'><h1>Sobre</h1></section>
@@ -45,6 +46,7 @@ class App extends Component {
             </div>
             </nav>
             <Route exact path='/' component={ Home }/>
+            <Route path='/series/:genres' component={ Series }/>
             <Route exact path='/about' component={About}/>
             <Route exact path='/new' component={NewSeries} />
           <section id="services" className="services-section">
