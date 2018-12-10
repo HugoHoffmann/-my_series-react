@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import api from '/.Api'
+// extração somente do loadGenres
+import api from './Api'
 
 
 const status = {
