@@ -31,28 +31,8 @@
       "status": "toWatch",
       "genre": "Drama",
       "comments": "Galera fala bem"
-    },
-    {
-      "name": "b",
-      "status": "watched",
-      "genres": "Comédia",
-      "comments": "b",
-      "id": 21
-    },
-    {
-      "name": "teste",
-      "status": "watching",
-      "genres": "Comédia",
-      "comments": "tet",
-      "id": 22
-    },
-    {
-      "name": "Terstessss",
-      "status": "toWatch",
-      "genres": "Comédia",
-      "comments": "tess",
-      "id": 23
     }
+   
   ],
   "genres": [
     "Comédia",

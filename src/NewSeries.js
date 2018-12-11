@@ -51,7 +51,7 @@ class NewSeries extends Component{
         api.saveSeries(newSeries)
             .then((res)=>{
                 this.setState({
-                    redirect: '/series/'+this.refs.genre.value
+                    redirect: '/series/'+this.refs.genres.value
                 })
             })
     }
