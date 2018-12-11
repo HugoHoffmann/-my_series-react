@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 // extração somente do loadGenres
 import api from './Api'
 
+import { Link } from 'react-router-dom'
+
 
 const statuses = {
     'watched':  'Assistido',
@@ -38,7 +40,7 @@ class Series extends Component{
     }
     renderSeries(series){
         return(
-            <div className="item  col-xs-4 col-lg-4">
+            <div key={series.id} className="item  col-xs-4 col-lg-4">
                 <div className="thumbnail">
                     <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
                     <div className="caption">
@@ -47,11 +49,11 @@ class Series extends Component{
                         <div className="row">
                             <div className="col-xs-12 col-md-6">
                                 <p className="lead">
-                                    {series.genre} / {statuses[series.status]}
+                                    {series.genres} / {statuses[series.status]}
                                 </p>
                             </div>
                             <div className="col-xs-12 col-md-6">
-                                <a className="btn btn-success" href="">Gerenciar</a>
+                                <Link className="btn btn-success" to={'/series-edit/'+series.id}>Editar</Link>
                                 <a className="btn btn-success" onClick={() => this.deleteSeries(series.id)}>Excluir</a>
                             </div>
                         </div>
@@ -63,7 +65,7 @@ class Series extends Component{
     render(){
         return(  
             <section id="intro" className="intro-section">
-                <h1>Série {this.props.match.params.genres}</h1>
+                <h1>Série {this.props.match.params.genre}</h1>
 
                 {
                     this.state.isLoading && 

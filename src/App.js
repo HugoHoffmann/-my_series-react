@@ -8,6 +8,7 @@ import{
 
 import Home from './Home'
 import NewSeries from './NewSeries'
+import EditSeries from './EditSeries'
 import Series from './Series'
 
 // functional-stateless component
@@ -20,7 +21,6 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-        <div>
           <nav className="navbar navbar-default navbar-fixed-top" role="navigation">
             <div className="container">
               <div className="navbar-header page-scroll">
@@ -46,18 +46,12 @@ class App extends Component {
             </div>
             </nav>
             <Route exact path='/' component={ Home }/>
-            <Route path='/series/:genres' component={ Series }/>
+            <Route path='/series-edit/:id' component={ EditSeries }/>
+            <Route path='/series/:genre' component={ Series }/>
             <Route exact path='/about' component={About}/>
             <Route exact path='/new' component={NewSeries} />
-          <section id="services" className="services-section">
-            <div className="container">
-              <div className="row">
-                
-              </div>
-            </div>
-          </section>
+          
         </div>
-      </div>
       </Router>
     );
   }
