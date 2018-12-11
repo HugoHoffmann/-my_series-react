@@ -14,7 +14,7 @@ class Home extends Component{
     }
     
         // assim que o componente for montado, a promess irá buscar os generos na API
-    // iniciar o json-server -> json-server --watch db.json port 3001
+    // iniciar o json-server -> json-server --watch db.json --port 3001
     // navegabilidade yarn add react-router-dom
     componentDidMount(){
         this.setState({isLoading: true})

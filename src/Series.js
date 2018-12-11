@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import api from './Api'
 
 
-const status = {
+const statuses = {
     'watched':  'Assistido',
     'watching': 'Assistindo',
     'toWatch':  'Assistir'
@@ -39,7 +39,7 @@ class Series extends Component{
                         <div className="row">
                             <div className="col-xs-12 col-md-6">
                                 <p className="lead">
-                                    {series.genre} / {status[series.status]}
+                                    {series.genre} / {statuses[series.status]}
                                 </p>
                             </div>
                             <div className="col-xs-12 col-md-6">
@@ -52,9 +52,9 @@ class Series extends Component{
         )
     }
     render(){
-        return(
+        return(  
             <section id="intro" className="intro-section">
-                <h1>Série {this.props.match.params.genre}</h1>
+                <h1>Série {this.props.match.params.genres}</h1>
 
                 <div id="series" className="row list-group">
                     
