@@ -16,7 +16,7 @@ class EditSeries extends Component{
         super(props)
 
         this.state = {
-            genres: [],
+            genre: [],
             isLoading: false,
             redirect: false,
             series:{}
@@ -41,7 +41,7 @@ class EditSeries extends Component{
         .then((res)=>{
             this.setState({
                 isLoading: false,
-                genres: res.data
+                genre: res.data
             })
 
         })
@@ -53,7 +53,7 @@ class EditSeries extends Component{
             id: this.props.match.params.id, 
             name :  this.refs.name.value,
             status: this.refs.status.value,
-            genres: this.refs.genre.value,
+            genre: this.refs.genre.value,
             comments: this.refs.comments.value
         }
         api.updateSeries(newSeries)
@@ -81,7 +81,7 @@ class EditSeries extends Component{
                             </select><br/><br/>
                     Gênero: <select ref="genre">
                                 { 
-                                    this.state.genres
+                                    this.state.genre
                                     .map( key => <option key={key} value={key}>{key}</option>)
                                 }
                             </select><br/><br/>

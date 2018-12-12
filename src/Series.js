@@ -49,7 +49,7 @@ class Series extends Component{
                         <div className="row">
                             <div className="col-xs-12 col-md-6">
                                 <p className="lead">
-                                    {series.genres} / {statuses[series.status]}
+                                    {series.genre} / {statuses[series.status]}
                                 </p>
                             </div>
                             <div className="col-xs-12 col-md-6">

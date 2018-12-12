@@ -16,7 +16,7 @@ class NewSeries extends Component{
         super(props)
 
         this.state = {
-            genres: [],
+            genre: [],
             isLoading: false,
             redirect: false
         }
@@ -34,7 +34,7 @@ class NewSeries extends Component{
         .then((res)=>{
             this.setState({
                 isLoading: false,
-                genres: res.data
+                genre: res.data
             })
 
         })
@@ -45,13 +45,13 @@ class NewSeries extends Component{
         const newSeries = {
             name :  this.refs.name.value,
             status: this.refs.status.value,
-            genres: this.refs.genre.value,
+            genre: this.refs.genre.value,
             comments: this.refs.comments.value
         }
         api.saveSeries(newSeries)
             .then((res)=>{
                 this.setState({
-                    redirect: '/series/'+this.refs.genres.value
+                    redirect: '/series/'+this.refs.genre.value
                 })
             })
     }
@@ -73,7 +73,7 @@ class NewSeries extends Component{
                             </select><br/><br/>
                     Gênero: <select ref="genre">
                                 { 
-                                    this.state.genres
+                                    this.state.genre
                                     .map( key => <option key={key} value={key}>{key}</option>)
                                 }
                             </select><br/><br/>
